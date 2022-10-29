@@ -29,7 +29,7 @@ int main(){
     cout<<"Enter a number>>"<<endl;
     cin>>key;
     int index = linearSearch(arr,size,key);
-    if(index > 0){
+    if(index >= 0){
         cout<<key<<" found at index "<<index<<endl;
     }else{
         cout<<key<<" not found in array!"<<endl;
