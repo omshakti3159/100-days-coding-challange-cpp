@@ -2,13 +2,16 @@
 using namespace std;
 
 int maxSumOfSubarrays(int arr[],int n){
+    int prefixSums[n];
+    prefixSums[0] = arr[0];
+    for(int i=1; i<n; i++){
+        prefixSums[i] = prefixSums[i-1] + arr[i];
+    }
+
     int maxSum = 0;
     for(int i=0; i<n; i++){
         for(int j=i+1; j<n; j++){
-            int currSum = 0;
-            for(int k=i; k<=j; k++){
-                currSum += arr[k];
-            }
+            int currSum = i>0 ? prefixSums[j] - prefixSums[i-1] : prefixSums[j];
             maxSum = max(maxSum,currSum);
         }
     }
